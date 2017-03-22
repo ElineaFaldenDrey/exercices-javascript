@@ -2,61 +2,60 @@
 
 // -------- VARIABLE INITIALISATION --------------------------------
 
-var tabWeapon = ["sword","none","knife","spike","kettle","baton"];
+var tabWeapon = ["none","sword","knife","spike","kettle","baton"];
+var tabWeaponDamage = [1,5,3,4,2,2];
+
 // -------- USEFULL FUNCTIONS --------------------------------------
+
 function random(){ return Math.round(Math.random()*10 +10);}
 
 function randomPetit(){ return Math.round(Math.random()*10 +5);}
 
+function choice(){ return Math.abs(Math.floor(Math.random()*tabWeapon.length));}
+console.log("VERIFICATIONS random weapons :"+ choice());
+
+// -------- WEAPON DEFINITION ---------------------------------------
+
 function chooseWeapon(){
-	let choice = Math.abs(Math.round(Math.random()*tabWeapon.length));
-	console.log("VERIFICATIONS random weapons :"+ choice);
-	console.log(tabWeapon[choice]);
-	return tabWeapon[choice]; 
+	
+	console.log("Weapon : " + tabWeapon[choice()]);
+	return tabWeapon[choice()]; 
 }
 
-console.log(random());
+function getWeaponDamages(){
+	console.log("Damages : " + tabWeaponDamage[choice()]);
+	return tabWeaponDamage[choice()];
+}
+
+// -------- COMBAT FUNCTIONS -----------------------------------------
+
+function attack(){
+		let attackValue = this.weaponDamages + this.force;
+		console.log("Attack value = "+ attackValue);
+		return attackValue;
+}
+
+function receiveDamage(ennemy){
+		return this.life = this.life - (ennemy.weaponDamages + ennemy.force);
+}
 
 // -------- OBJECTS DEFINITION -------------------------------------
+
 var character = {
 	name : "empty",
 	level : 0,
 	life : 0,
 	force : 0,
 	defense : 0,
-	//characterDamages : this.force + this.weapon.damage,
-
-	weapon : {
-		name : "empty",
-		damage : 0
-	}
-
-	/*function attack(){
-		return;
-	}
-
-	function receiveDamage(ennemy){
-		return this.life = this.life - ennemy.characterDamages;
-	}*/
+	weaponName : "",
+	weaponDamages : 0
 }
 
-
 // -------- CREATION CHARACTERS -----------------------------------
+
 var opponentCharacter = Object.create(character);
 //debugger;
 var mainCharacter = Object.create(character);
-//			VERIFICATIONS
-console.log("Name Before : " + opponentCharacter.name);
-console.log("Level Before : " + opponentCharacter.level);
-console.log("Life Before : " + opponentCharacter.life);
-console.log("Force Before : " + opponentCharacter.force);
-console.log("Weapon Before : " + opponentCharacter.weapon.name);
-
-console.log("Name Before : " + mainCharacter.name);
-console.log("Level Before : " + mainCharacter.level);
-console.log("Life Before : " + mainCharacter.life);
-console.log("Force Before : " + mainCharacter.force);
-console.log("Weapon Before : " + mainCharacter.weapon.name);
 
 // -------- INITIALISATION CHARACTERS -----------------------------
 
@@ -68,8 +67,8 @@ function initialisation(perso){
 		perso.force = random();
 		perso.defense = randomPetit();
 
-		perso.weapon = Object.create(character.weapon);
-		perso.weapon.name = chooseWeapon();
+		perso.weaponName = chooseWeapon();
+		perso.weaponDamages = getWeaponDamages();
 		return perso;
 	}
 
@@ -81,10 +80,12 @@ console.log("Name After : " + opponentCharacter.name);
 console.log("Level After : " + opponentCharacter.level);
 console.log("Life After : " + opponentCharacter.life);
 console.log("Force After : " + opponentCharacter.force);
-console.log("Weapon After : " + opponentCharacter.weapon.name)
+console.log("Weapon After : " + opponentCharacter.weaponName);
+console.log("Weapon Damages After : " + opponentCharacter.weaponDamages);
 
 console.log("Name After : " + mainCharacter.name);
 console.log("Level After : " + mainCharacter.level);
 console.log("Life After : " + mainCharacter.life);
 console.log("Force After : " + mainCharacter.force);
-console.log("Weapon After : " + mainCharacter.weapon.name)
+console.log("Weapon After : " + mainCharacter.weaponName);
+console.log("Weapon Damages After : " + mainCharacter.weaponDamages);
