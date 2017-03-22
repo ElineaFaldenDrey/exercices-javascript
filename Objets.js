@@ -2,15 +2,16 @@
 
 // -------- VARIABLE INITIALISATION --------------------------------
 
-var tabWeapon = ["sword","none","knife","spike","kettle"];
+var tabWeapon = ["sword","none","knife","spike","kettle","baton"];
 // -------- USEFULL FUNCTIONS --------------------------------------
 function random(){ return Math.round(Math.random()*10 +10);}
 
 function randomPetit(){ return Math.round(Math.random()*10 +5);}
 
 function chooseWeapon(){
-	let choice = Math.abs(Math.round(Math.random()*10-(10-tabWeapon.length)));
+	let choice = Math.abs(Math.round(Math.random()*tabWeapon.length));
 	console.log("VERIFICATIONS random weapons :"+ choice);
+	console.log(tabWeapon[choice]);
 	return tabWeapon[choice]; 
 }
 
@@ -42,6 +43,7 @@ var character = {
 
 // -------- CREATION CHARACTERS -----------------------------------
 var opponentCharacter = Object.create(character);
+//debugger;
 var mainCharacter = Object.create(character);
 //			VERIFICATIONS
 console.log("Name Before : " + opponentCharacter.name);
@@ -66,6 +68,7 @@ function initialisation(perso){
 		perso.force = random();
 		perso.defense = randomPetit();
 
+		perso.weapon = Object.create(character.weapon);
 		perso.weapon.name = chooseWeapon();
 		return perso;
 	}
