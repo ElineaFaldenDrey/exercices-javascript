@@ -12,7 +12,7 @@ function random(){ return Math.round(Math.random()*10 +10);}
 function randomPetit(){ return Math.round(Math.random()*10 +5);}
 
 function choice(){ return Math.abs(Math.floor(Math.random()*tabWeapon.length));}
-console.log("VERIFICATIONS random weapons :"+ choice());
+
 
 // -------- WEAPON DEFINITION ---------------------------------------
 
@@ -51,10 +51,10 @@ var character = {
 	weaponDamages : 0
 }
 
+
 // -------- CREATION CHARACTERS -----------------------------------
 
 var opponentCharacter = Object.create(character);
-//debugger;
 var mainCharacter = Object.create(character);
 
 // -------- INITIALISATION CHARACTERS -----------------------------
@@ -75,7 +75,7 @@ function initialisation(perso){
 	initialisation(opponentCharacter);
 	initialisation(mainCharacter);
 
-	//			VERIFICATIONS
+	//			VERIFICATIONS ---------------------------------------------
 console.log("Name After : " + opponentCharacter.name);
 console.log("Level After : " + opponentCharacter.level);
 console.log("Life After : " + opponentCharacter.life);
@@ -89,3 +89,5 @@ console.log("Life After : " + mainCharacter.life);
 console.log("Force After : " + mainCharacter.force);
 console.log("Weapon After : " + mainCharacter.weaponName);
 console.log("Weapon Damages After : " + mainCharacter.weaponDamages);
+// -------- COMBATS PHASE ----------------------------------------------
+
