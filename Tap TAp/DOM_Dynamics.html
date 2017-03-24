@@ -38,6 +38,7 @@
 
 					let squares = document.getElementsByClassName("square");
 					let btnStartGame = document.getElementById("start");
+					
 					let squaresStack = [];
 // -----------------------------------------------------------------------------------------------------------------------
 					let Square = function(element, delay, random){
@@ -105,6 +106,8 @@
 						setTimeout(showSquare, 1000);
 					}
 
+				
+
 					let showSquare = function(){
 						let randomInt = Math.floor(Math.random()*squares.length);
 						let selectedSquare = squaresStack[randomInt];
@@ -113,6 +116,8 @@
 
 						setTimeout(showSquare, selectedSquare.random + selectedSquare.delay);
 					}
+
+					
 
 					btnStartGame.addEventListener("click", launchGame);
 					
@@ -142,6 +147,7 @@
 				<div id="square-8" class="square"></div>
 				<div class="commands">	
 						<button id="start">Start game</button>
+						<button id="stop" onClick="javascript:alert('Le jeu est en pause!')">Pause game</button>
 						<p id="message"></p>
 				</div>
 		</div>
