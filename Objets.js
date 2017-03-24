@@ -76,6 +76,7 @@ function initialisation(perso){
 	initialisation(mainCharacter);
 
 	//			VERIFICATIONS ---------------------------------------------
+
 console.log("Name After : " + opponentCharacter.name);
 console.log("Level After : " + opponentCharacter.level);
 console.log("Life After : " + opponentCharacter.life);
@@ -89,5 +90,8 @@ console.log("Life After : " + mainCharacter.life);
 console.log("Force After : " + mainCharacter.force);
 console.log("Weapon After : " + mainCharacter.weaponName);
 console.log("Weapon Damages After : " + mainCharacter.weaponDamages);
+
 // -------- COMBATS PHASE ----------------------------------------------
 
+attack(opponentCharacter);
+console.log(opponentCharacter);
